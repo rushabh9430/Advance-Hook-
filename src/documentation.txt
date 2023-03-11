@@ -1,0 +1,11 @@
+
+
+Context API :➡️
+The Context API helps share data between components which you can't easily share with props,
+
+Context API is a feature in React.js that allows you to share state between components within a single application.
+
+With Context API, you can pass data to all levels of the component tree without having to manually pass props through each level.
+
+React Context API allows you to easily access data at different Levels of the component  tree , without passing prop to every level
+
