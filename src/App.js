@@ -1,58 +1,57 @@
-// increament and Decrement code with using useReducer 
-
-// What is useReducer ? 
-//  🔯 useReducer is a react hook used for state management .
-
-//  🔯 Alternative(વૈકલ્પિક) of useState() hook
-
-//  🔯 preferable for complex state management logic.
-
-// Syntax 
-
-
-import React, { useReducer } from "react";
-
-const initialState = 0 ;
-
-const reducer = (state, action) => {
-  if(action.type === 'INCREMENT') {
-    return state + 1
-  }
-
-  if(action.type === 'DECEREMENT') {
-    return state > 0 ? state - 1 : state 
-  }
-  return state;
-};
-
-const App = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
-  return (
-    <div>
-      <button onClick={() => dispatch({type : 'INCREMENT'})}>Increment</button>
-      {state}
-      <button onClick={() => dispatch({type : 'DECEREMENT'})}>Decriment</button>
-    </div>
-  );
-};
-
-export default App;
-
-
-
-//Simple increment Decrement Code  
-// import React, { useState } from "react";
+// // Without useMemo Hook
+// import React , {useState} from "react";
 
 // function App() {
-//     const[state , setState] = useState(0);
 
+//     const [color , setColor] = useState('red')
+
+//     const[count ,  setCount] = useState(0)
+
+//     function OddAndEven() {
+//         return count%2===0
+//     }
+    
 //   return (
 //     <div className="App">
-//         <button className="btn btn-primary" onClick={() => {setState(state + 1)}}>Increment</button>
-//         {state}
-//         <button className="btn btn-primary" onClick={() => {setState(state - 1)}}>Decriment</button>
+//         <h1>Usememo Hook</h1>
+
+//          <button onClick={() => {setColor(color === 'red' ? 'green' : 'red')}}>{color}</button>
+
+//          <button onClick={()=>{setCount(count + 1)}}>Count :- {count}</button>
+
+//          {OddAndEven() ? "even" :"odd"}
 //     </div>
 //   );
 // }
 
 // export default App;
+
+
+//  With UseMemo hook
+import React , {useState , useMemo} from "react";
+
+function App() {
+
+    const [color , setColor] = useState('red')
+
+    const[count ,  setCount] = useState(0)
+
+    const OddAndEven = useMemo(function OddAndEven() {
+        console.warn("function is callled !")
+        return count%2===0
+    },[count])
+    
+  return (
+    <div className="App">
+        <h1>Usememo Hook</h1>
+
+         <button onClick={() => {setColor(color === 'red' ? 'green' : 'red')}}>{color}</button>
+
+         <button onClick={()=>{setCount(count + 1)}}>Count :- {count}</button>
+
+         {OddAndEven ? "even" :"odd"}
+    </div>
+  );
+}
+
+export default App;

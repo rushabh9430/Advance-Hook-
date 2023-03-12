@@ -9,3 +9,7 @@ With Context API, you can pass data to all levels of the component tree without 
 
 React Context API allows you to easily access data at different Levels of the component  tree , without passing prop to every level
 
+
+
+UseMemo : 
+The main difference between useMemo and useCallback hook is, useMemo returns memoized value and useCallback returns memoised function.
