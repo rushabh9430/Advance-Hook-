@@ -1,17 +1,13 @@
-import React , { useContext , useEffect} from 'react'
-import Monkey from '../context/UseContext'
+import React , {memo} from 'react'
 
-const BottomLevelComponent = () => {
-    const data = useContext(Monkey)
-
-    useEffect(() => {
-        data.update()
-    }, [data])
+const BottomLevelComponent = (props) => {
+    console.info("BottomComponets")
   return (
     <div>
-        this state name is {data.state}
+        <h1>BottomLevelComponent</h1>
+        {props.BottomComponent}
     </div>
   )
 }
 
-export default BottomLevelComponent
+export default memo(BottomLevelComponent)
